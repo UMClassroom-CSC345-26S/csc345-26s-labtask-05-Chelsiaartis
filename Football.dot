@@ -1,0 +1,32 @@
+digraph G {
+    rankdir=BT; // Bottom-to-top layout for hierarchies
+    node [shape=rectangle, style=filled, fillcolor=lightyellow, fontname="Arial"];
+    edge [fontname="Arial", fontsize=10];
+
+    /* Specific Game Facts */
+    Miami_Hurricanes -> CFPNC_2026 [label="lost"];
+    Indiana_Hoosiers -> CFPNC_2026 [label="won"];
+    "20_January_2026" -> CFPNC_2026 [label="is_date"];
+    "27" -> CFPNC_2026 [label="winning_score"];
+    "21" -> CFPNC_2026 [label="losing_score"];
+    Carson_Beck -> CFPNC_2026 [label="played_in"];
+    Carson_Beck -> Miami_Hurricanes [label="member"];
+
+    /* SUMO Ontological Mappings */
+    CFPNC_2026 -> FootballUS [label="instance"];
+    FootballUS -> TeamSport -> Sport -> RecreationOrExercise -> IntentionalProcess -> Process -> Physical -> Entity [label="subclass"];
+    
+    Miami_Hurricanes -> SportsTeam [label="instance"];
+    Indiana_Hoosiers -> SportsTeam [label="instance"];
+    SportsTeam -> Organization -> Group -> Collection -> Abstract -> Entity [label="subclass"];
+
+    "20_January_2026" -> Day [label="instance"];
+    Day -> TimeInterval -> TimePosition -> PhysicalQuantity -> Quantity -> Abstract -> Entity [label="subclass"];
+
+    "27" -> NonnegativeInteger [label="instance"];
+    "21" -> NonnegativeInteger [label="instance"];
+    NonnegativeInteger -> Integer -> RealNumber -> Number -> Quantity [label="subclass"];
+
+    Carson_Beck -> Man [label="instance"];
+    Man -> Human -> Animal -> Organism -> Object -> Physical [label="subclass"];
+}
